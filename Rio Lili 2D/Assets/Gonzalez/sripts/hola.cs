@@ -1,10 +1,10 @@
+
 using UnityEngine;
 
-public class Explosion : MonoBehaviour
+public class hola : MonoBehaviour
 {
     void Start()
     {
-     
         Animator animator = GetComponent<Animator>();
         if (animator != null)
         {
@@ -13,8 +13,7 @@ public class Explosion : MonoBehaviour
         }
         else
         {
-          
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 2f); 
         }
     }
 }
