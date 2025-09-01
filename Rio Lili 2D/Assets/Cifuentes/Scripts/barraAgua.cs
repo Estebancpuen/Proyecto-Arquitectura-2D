@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; // muy importante para Image/Slider
+using UnityEngine.UI; // necesario para Slider / Image
+using UnityEngine.SceneManagement; // 👈 para reiniciar o cambiar de escena si quieres
 
 public class barraAgua : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class barraAgua : MonoBehaviour
     public Image barraImage;
 
     [Header("Objeto Agua (sprites del mundo)")]
-    public SpriteRenderer[] aguaRenderers; // 👈 ahora soporta varios
+    public SpriteRenderer[] aguaRenderers;
 
     [Header("Configuración")]
     public float reduccionPorSegundo = 0.01f;
@@ -19,15 +20,24 @@ public class barraAgua : MonoBehaviour
     public Color colorVacio = Color.red;
 
     private float agua = 1f;
+    private bool gameOverActivado = false;
 
     void Update()
     {
+        if (gameOverActivado) return; // si ya terminó, no seguir
+
         // Reducir agua con el tiempo
         agua -= reduccionPorSegundo * Time.deltaTime;
         agua = Mathf.Clamp01(agua);
 
         ActualizarUI();
         ActualizarAguaSprites();
+
+        // Verificar Game Over
+        if (agua <= 0f && !gameOverActivado)
+        {
+            ActivarGameOver();
+        }
     }
 
     public void RecuperarAgua()
@@ -58,5 +68,14 @@ public class barraAgua : MonoBehaviour
                     sr.color = nuevoColor;
             }
         }
+    }
+
+    void ActivarGameOver()
+    {
+        gameOverActivado = true;
+        Debug.Log("GAME OVER: Te quedaste sin agua 💧");
+
+        FindAnyObjectByType<gameOver>().MostrarGmaeOver();
+        Time.timeScale = 0f;
     }
 }
