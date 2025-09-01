@@ -15,24 +15,40 @@ public class PlayerSimple : MonoBehaviour
     public LayerMask capaSuelo;
 
     [Header("Fast Fall")]
-    public float caidaRapidaExtra = 10f; // fuerza extra al presionar S
+    public float caidaRapidaExtra = 10f;
+
+    [Header("Sonidos")]
+    public AudioSource audioSource;
+    public AudioClip runSound;
+    public AudioClip jumpSound;
+    public AudioClip idleSound;
+
+    private void Start()
+    {
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
-        //Movimiento animacion
-        if (horizontal > 0 || horizontal < 0)
+        // Movimiento animación
+        if (horizontal != 0)
         {
             anim.SetFloat("walk", Mathf.Abs(horizontal));
+            ReproducirSonido(runSound, true); // loop de correr
         }
         else
         {
             anim.SetFloat("walk", 0);
+            ReproducirSonido(idleSound, true); // loop idle
         }
 
+        // Saltar
         if (Input.GetButtonDown("Jump") && EstaEnSuelo())
         {
             rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
             anim.SetBool("salto", true);
+            ReproducirSonido(jumpSound, false); // salto se reproduce una vez
         }
 
         if (EstaEnSuelo() && rb.velocity.y <= 0)
@@ -42,12 +58,6 @@ public class PlayerSimple : MonoBehaviour
 
         // Movimiento horizontal
         horizontal = Input.GetAxisRaw("Horizontal");
-
-        // Salto
-        if (Input.GetKeyDown(KeyCode.Space) && EstaEnSuelo())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
-        }
 
         // Voltear sprite
         if (mirandoDerecha && horizontal < 0f || !mirandoDerecha && horizontal > 0f)
@@ -71,5 +81,15 @@ public class PlayerSimple : MonoBehaviour
     private bool EstaEnSuelo()
     {
         return Physics2D.OverlapCircle(checkSuelo.position, 0.2f, capaSuelo);
+    }
+
+    // Método para reproducir sonidos evitando que se corten
+    private void ReproducirSonido(AudioClip clip, bool loop)
+    {
+        if (audioSource.clip == clip && audioSource.isPlaying) return;
+
+        audioSource.loop = loop;
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 }
