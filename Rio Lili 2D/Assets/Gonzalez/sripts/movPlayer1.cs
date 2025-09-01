@@ -14,6 +14,9 @@ public class PlayerSimple : MonoBehaviour
     public Transform checkSuelo;
     public LayerMask capaSuelo;
 
+    [Header("Fast Fall")]
+    public float caidaRapidaExtra = 10f; // fuerza extra al presionar S
+
     private void Update()
     {
         //Movimiento animacion
@@ -26,20 +29,16 @@ public class PlayerSimple : MonoBehaviour
             anim.SetFloat("walk", 0);
         }
 
-
-
         if (Input.GetButtonDown("Jump") && EstaEnSuelo())
         {
             rb.velocity = new Vector2(rb.velocity.x, fuerzaSalto);
             anim.SetBool("salto", true);
-
         }
 
         if (EstaEnSuelo() && rb.velocity.y <= 0)
         {
             anim.SetBool("salto", false);
         }
-
 
         // Movimiento horizontal
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -55,6 +54,12 @@ public class PlayerSimple : MonoBehaviour
         {
             mirandoDerecha = !mirandoDerecha;
             transform.Rotate(0f, 180f, 0f);
+        }
+
+        // Fast Fall (cuando está en el aire y presiona S)
+        if (!EstaEnSuelo() && Input.GetKey(KeyCode.S))
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - caidaRapidaExtra * Time.deltaTime);
         }
     }
 
