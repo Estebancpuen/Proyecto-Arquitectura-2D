@@ -3007,7 +3007,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &232346389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3043,7 +3043,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.20392157, b: 0, a: 0.9843137}
+  m_Color: {r: 0.23921569, g: 0, b: 0.00838196, a: 0.9843137}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3462,6 +3462,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3819016200362762560, guid: f85c0fbadcc711942809775f81529d7f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486681559}
+    - targetCorrespondingSourceObject: {fileID: 3819016200362762560, guid: f85c0fbadcc711942809775f81529d7f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486681563}
   m_SourcePrefab: {fileID: 100100000, guid: f85c0fbadcc711942809775f81529d7f, type: 3}
 --- !u!1001 &315746638
 PrefabInstance:
@@ -12685,7 +12688,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1037623631}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1486681563}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: volverMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1037623631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16354,6 +16369,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 232346388}
+--- !u!114 &1486681563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486681555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 238815f195e98df4bb828b7f39b7d908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1488048372 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2408275072930650790, guid: fa460d179fa3f0b4f884ee7ceb657eaa, type: 3}
