@@ -7,9 +7,11 @@ public class Parallax : MonoBehaviour
 
     [Header("Configuración")]
     public Transform cam;          // Cámara a seguir
-    public float parallaxSpeed;    // Velocidad relativa (ej: 0.2 lejano, 0.8 cercano)
+    public float parallaxSpeed = 0.5f; // 0.2 lejano, 0.8 cercano
+    public float suavizado = 5f;   // cuanto mayor, más suave
 
     private float startPosX;
+    private Vector3 targetPos;
 
     void Start()
     {
@@ -17,14 +19,19 @@ public class Parallax : MonoBehaviour
             cam = Camera.main.transform;
 
         startPosX = transform.position.x;
+        targetPos = transform.position;
     }
 
-    void Update()
+    void LateUpdate()
     {
         if (cam == null) return;
 
+        // Calcular posición deseada
         float dist = cam.position.x * parallaxSpeed;
-        transform.position = new Vector3(startPosX + dist, transform.position.y, transform.position.z);
+        targetPos = new Vector3(startPosX + dist, transform.position.y, transform.position.z);
+
+        // Suavizar movimiento
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * suavizado);
     }
 
 }
