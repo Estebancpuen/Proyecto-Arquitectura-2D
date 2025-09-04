@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class cameraTrigger : MonoBehaviour
 {
-    public Camera camara; // arrastra aquí tu cámara
+      public Camera camara; // arrastra aquí tu cámara
     public Vector3 nuevaPosicion;
     public float nuevoSize = 5f;
     public float velocidadTransicion = 2f;
 
     private bool enTransicion = false;
-    private camera scriptFollow;
-    private BoxCollider2D boxCollider;
+    private camera scriptFollow; // referencia al script que sigue al player
 
     private void Start()
     {
         if (camara != null)
+        {
             scriptFollow = camara.GetComponent<camera>();
-
-        boxCollider = GetComponent<BoxCollider2D>();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,10 +29,6 @@ public class cameraTrigger : MonoBehaviour
                 scriptFollow.enabled = false;
 
             enTransicion = true;
-
-            // Convertir este collider en barrera (dejar de ser trigger)
-            if (boxCollider != null)
-                boxCollider.isTrigger = false;
         }
     }
 
