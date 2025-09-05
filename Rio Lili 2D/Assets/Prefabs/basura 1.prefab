@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1012036690674813392}
   - component: {fileID: 4698208914057085664}
   - component: {fileID: 3421887815445441504}
+  - component: {fileID: -1734926713708097454}
   m_Layer: 3
   m_Name: basura 1
   m_TagString: Untagged
@@ -95,7 +96,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4101483652155525901}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -174,3 +175,19 @@ MonoBehaviour:
   golpesNecesarios: 3
   animator: {fileID: 0}
   explosionPrefab: {fileID: 5222672591657559387, guid: c2629baa5588d164499d7bfcf248ab7a, type: 3}
+  barraAguaScript: {fileID: 0}
+  explosionSound: {fileID: 0}
+--- !u!114 &-1734926713708097454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101483652155525901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5362d048facf4e4b876987c86e3b887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocidad: 3
+  rango: 2
