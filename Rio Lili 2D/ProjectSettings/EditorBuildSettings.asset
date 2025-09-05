@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Escena Cueva.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/Inicio.unity
+    guid: 28c27d130b8618d499d8e381820bc93c
+  - enabled: 1
+    path: Assets/Scenes/Contexto.unity
+    guid: 10a85b1e888480a47ba79707b2bd84e4
   - enabled: 1
     path: Assets/Scenes/Escena Rio.unity
     guid: 529336b83e2e97848afffa6aa7e43fc0
-  - enabled: 1
-    path: Assets/Scenes/Inicio.unity
-    guid: 28c27d130b8618d499d8e381820bc93c
   - enabled: 1
     path: Assets/Scenes/controles.unity
     guid: 1b26b1599a44ea44182fa08d92dc4a73
@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/loading.unity
     guid: 87618d9f1d50892469ee6e0d90eb9d70
   - enabled: 1
-    path: Assets/Scenes/Contexto.unity
-    guid: 10a85b1e888480a47ba79707b2bd84e4
+    path: Assets/Scenes/Escena Cueva.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
