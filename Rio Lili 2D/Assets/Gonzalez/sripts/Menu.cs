@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
     public void volverMenu()
     {
 
-        SceneManager.LoadScene("Menu");
+        SceneManager.LoadScene("Inicio");
     }
 
 
