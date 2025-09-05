@@ -32,16 +32,8 @@ public class appleBoost : MonoBehaviour
     {
         jugador.velocidad += aumentoVelocidad;
 
-        // Activar el ícono en el Canvas
-        if (iconoBoost != null)
-            iconoBoost.enabled = true;
-
         yield return new WaitForSeconds(duracion);
 
-        jugador.velocidad -= aumentoVelocidad;
-
-        // Desactivar el ícono en el Canvas
-        if (iconoBoost != null)
-            iconoBoost.enabled = false;
+        jugador.velocidad -= aumentoVelocidad; // volver a la normalidad
     }
 }
