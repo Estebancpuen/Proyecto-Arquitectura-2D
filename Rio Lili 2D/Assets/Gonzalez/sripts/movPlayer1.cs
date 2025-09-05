@@ -17,11 +17,16 @@ public class PlayerSimple : MonoBehaviour
     [Header("Fast Fall")]
     public float caidaRapidaExtra = 10f;
 
+    [Header("Rodar")]
+    public float fuerzaRodar = 7f;
+    private bool rodando = false;
+
     [Header("Sonidos")]
     public AudioSource audioSource;
     public AudioClip runSound;
     public AudioClip jumpSound;
     public AudioClip idleSound;
+    public AudioClip rollSound;
 
     private void Start()
     {
@@ -31,6 +36,8 @@ public class PlayerSimple : MonoBehaviour
 
     private void Update()
     {
+        if (rodando) return; // mientras rueda, no puede mover ni saltar normal
+
         // Movimiento animación
         if (horizontal != 0)
         {
@@ -71,10 +78,18 @@ public class PlayerSimple : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y - caidaRapidaExtra * Time.deltaTime);
         }
+
+        // Rodar con tecla C
+        if (Input.GetKeyDown(KeyCode.C) && EstaEnSuelo())
+        {
+            StartCoroutine(Rodar());
+        }
     }
 
     private void FixedUpdate()
     {
+        if (rodando) return; // no se mueve con Input mientras rueda
+
         rb.velocity = new Vector2(horizontal * velocidad, rb.velocity.y);
     }
 
@@ -91,5 +106,25 @@ public class PlayerSimple : MonoBehaviour
         audioSource.loop = loop;
         audioSource.clip = clip;
         audioSource.Play();
+    }
+
+    // -----------------------------
+    // MECÁNICA DE RODAR
+    // -----------------------------
+    private System.Collections.IEnumerator Rodar()
+    {
+        rodando = true;
+        anim.SetBool("rodar", true);
+        ReproducirSonido(rollSound, false);
+
+        // aplicar impulso según hacia dónde mira
+        float direccion = mirandoDerecha ? 1f : -1f;
+        rb.velocity = new Vector2(direccion * fuerzaRodar, rb.velocity.y);
+
+        // duración de la animación (ajústala a la tuya)
+        yield return new WaitForSeconds(0.6f);
+
+        anim.SetBool("rodar", false);
+        rodando = false;
     }
 }
