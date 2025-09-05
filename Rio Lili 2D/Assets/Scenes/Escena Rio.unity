@@ -1211,7 +1211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965192080834895294, guid: 0c7de03b9ffa2b947b5a66c1a9d821d0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6540630365005479586, guid: 0c7de03b9ffa2b947b5a66c1a9d821d0, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -26031,6 +26031,6 @@ SceneRoots:
   - {fileID: 1277685029}
   - {fileID: 946463777}
   - {fileID: 1537452753}
-  - {fileID: 122726707}
   - {fileID: 392275367}
+  - {fileID: 122726707}
   - {fileID: 186492878}
