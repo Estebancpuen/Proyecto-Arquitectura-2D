@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Escena Rio.unity
     guid: 529336b83e2e97848afffa6aa7e43fc0
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/Inicio.unity
     guid: 28c27d130b8618d499d8e381820bc93c
   - enabled: 1
     path: Assets/Scenes/controles.unity
