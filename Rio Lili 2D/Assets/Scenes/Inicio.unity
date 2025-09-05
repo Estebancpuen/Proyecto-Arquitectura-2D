@@ -122,6 +122,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &125252665 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6479408485296304466, guid: 601cd65259d27c84f8b177f137fc3769, type: 3}
+  m_PrefabInstance: {fileID: 971935648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &125252666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125252665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5716c5683f74b74085fe60f61b258e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &971935648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -229,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 7880195861475814367, guid: 601cd65259d27c84f8b177f137fc3769, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 125252666}
     - target: {fileID: 7880195861475814367, guid: 601cd65259d27c84f8b177f137fc3769, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -249,7 +266,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6479408485296304466, guid: 601cd65259d27c84f8b177f137fc3769, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 125252666}
   m_SourcePrefab: {fileID: 100100000, guid: 601cd65259d27c84f8b177f137fc3769, type: 3}
 --- !u!1 &1512797187
 GameObject:

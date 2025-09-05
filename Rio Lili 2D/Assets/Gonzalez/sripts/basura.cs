@@ -59,6 +59,13 @@ public class DestruirConGolpes : MonoBehaviour
                         barraAguaScript.RecuperarAgua();
                     }
 
+                    // ✅ Avisar al WinController que se destruyó una basura
+                    WinController win = FindObjectOfType<WinController>();
+                    if (win != null)
+                    {
+                        win.SumarPunto();
+                    }
+
                     // Destruir después de reproducir sonido y animación
                     Destroy(gameObject, 0.5f);
                 }

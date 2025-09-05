@@ -7,7 +7,7 @@ public class MenuInicio : MonoBehaviour
     public void IniciarJuego()
     {
      
-        SceneManager.LoadScene("Escena Rio");
+        SceneManager.LoadScene("Contexto");
     }
 
   
