@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class cameraTrigger : MonoBehaviour
 {
-    [Header("Cámara")]
+    [Header("CÃ¡mara")]
     public Camera camara;
     public Vector3 nuevaPosicion;
     public float nuevoSize = 5f;
@@ -18,7 +18,11 @@ public class cameraTrigger : MonoBehaviour
     public float fadeSpeed = 2f;
     public float duracion = 2f;
 
-    private bool yaActivado = false; // <-- NUEVO: evita que se repita
+    [Header("Sonido")]
+    public AudioSource audioSource;
+    public AudioClip sonidoCanvas; // Sonido cuando aparece el mensaje
+
+    private bool yaActivado = false; // evita que se repita
 
     private void Start()
     {
@@ -27,13 +31,16 @@ public class cameraTrigger : MonoBehaviour
 
         if (canvasMensaje != null)
             canvasMensaje.alpha = 0;
+
+        if (audioSource == null)
+            audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !yaActivado) // <-- chequea si ya pasó
+        if (other.CompareTag("Player") && !yaActivado)
         {
-            yaActivado = true; // se marca como usado
+            yaActivado = true;
 
             // Desactivar el seguimiento
             if (scriptFollow != null)
@@ -41,7 +48,7 @@ public class cameraTrigger : MonoBehaviour
 
             enTransicion = true;
 
-            // Mostrar mensaje
+            // Mostrar mensaje con sonido
             if (canvasMensaje != null)
                 StartCoroutine(MostrarMensaje());
         }
@@ -51,14 +58,12 @@ public class cameraTrigger : MonoBehaviour
     {
         if (enTransicion && camara != null)
         {
-            // Lerp de posición
             camara.transform.position = Vector3.Lerp(
                 camara.transform.position,
                 new Vector3(nuevaPosicion.x, nuevaPosicion.y, camara.transform.position.z),
                 Time.deltaTime * velocidadTransicion
             );
 
-            // Lerp del size
             camara.orthographicSize = Mathf.Lerp(
                 camara.orthographicSize,
                 nuevoSize,
@@ -69,6 +74,10 @@ public class cameraTrigger : MonoBehaviour
 
     IEnumerator MostrarMensaje()
     {
+        // ðŸ”Š Reproducir sonido al iniciar
+        if (sonidoCanvas != null && audioSource != null)
+            audioSource.PlayOneShot(sonidoCanvas);
+
         // Fade In
         while (canvasMensaje.alpha < 1)
         {
