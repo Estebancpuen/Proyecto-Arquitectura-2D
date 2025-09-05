@@ -1837,7 +1837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4f668179b135f4c898819bf106bda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objetivo: 4
+  objetivo: 1
   winPanel: {fileID: 231085735}
 --- !u!4 &186492878
 Transform:
